@@ -50,4 +50,14 @@ export class CatsService {
         }
         return cat;
     }
+
+    //Metodo para eliminar un registro por id
+    delete(id: number): boolean {
+        const index = this.#cats.findIndex(cat => cat.id === id);
+        if (index !== -1) {
+            this.#cats.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
 }
