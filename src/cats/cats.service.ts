@@ -41,4 +41,13 @@ export class CatsService {
     findOne(id: number): Cat | undefined {
         return this.#cats.find(cat => cat.id === id);
     }
+
+    //Metodo para actualizar parcialmente el nombre de un registro
+    updateName(id: number, name: string): Cat | undefined {
+        const cat = this.#cats.find(cat => cat.id === id);
+        if (cat) {
+            cat.name = name;
+        }
+        return cat;
+    }
 }

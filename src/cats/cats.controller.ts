@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Param, NotFoundException } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, NotFoundException, Patch } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './types/cat.type';
 import { CatDto } from './types/cat.dto';
@@ -20,6 +20,15 @@ export class CatsController {
     @Get(':id') // GET /cats/:id
     getCatById(@Param('id') id: string): Cat {
         const cat = this.catsService.findOne(Number(id));
+        if (!cat) {
+            throw new NotFoundException('Cat not found');
+        }
+        return cat;
+    }
+
+    @Patch(':id') // PATCH /cats/:id
+    updateCatName(@Param('id') id: string, @Body('name') name: string): Cat {
+        const cat = this.catsService.updateName(Number(id), name);
         if (!cat) {
             throw new NotFoundException('Cat not found');
         }
