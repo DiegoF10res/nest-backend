@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, NotFoundException } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './types/cat.type';
 import { CatDto } from './types/cat.dto';
@@ -15,5 +15,14 @@ export class CatsController {
     @Post() //Genera una ruta de tipo POST /cats
     createCat(@Body() createCatDto: CatDto): Cat {
         return this.catsService.create(createCatDto);
+    }
+
+    @Get(':id') // GET /cats/:id
+    getCatById(@Param('id') id: string): Cat {
+        const cat = this.catsService.findOne(Number(id));
+        if (!cat) {
+            throw new NotFoundException('Cat not found');
+        }
+        return cat;
     }
 }

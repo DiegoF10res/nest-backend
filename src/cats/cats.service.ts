@@ -36,4 +36,9 @@ export class CatsService {
         // Devolver el nuevo registro
         return newCat;
     }
+
+    //Metodo para buscar un registro por id
+    findOne(id: number): Cat | undefined {
+        return this.#cats.find(cat => cat.id === id);
+    }
 }
