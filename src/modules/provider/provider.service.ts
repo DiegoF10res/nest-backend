@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/infrastructure/prisma.service';
+import { UpdateProviderDto } from './dto/update-provider.dto';
 
 @Injectable()
 export class ProviderService {
@@ -17,4 +18,11 @@ export class ProviderService {
         return this.prisma.provider.findUnique({ where: { id } });
     }
 
+    async update(id: number, updateProviderDto: UpdateProviderDto) {
+        return this.prisma.provider.update({
+            where: { id },
+            data: updateProviderDto,
+        });
+    }
+    
 }
