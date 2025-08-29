@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SaleService } from './sale.service';
 import { CreateSaleDto } from './dto/create-sale.dto';
 
@@ -15,6 +15,11 @@ export class SaleController {
     @Get()
     async findAll() {
         return this.saleService.findAll();
+    }
+
+    @Get(':id')
+    async findById(@Param('id') id: number) {
+        return this.saleService.findById(id);
     }
 
 }

@@ -32,4 +32,13 @@ export class SaleService {
         });
     }
 
+    async findById(id: number) {
+        return this.prisma.sale.findUnique({
+            where: { id },
+            include: {
+                details: true
+            }
+        });
+    }
+
 }
