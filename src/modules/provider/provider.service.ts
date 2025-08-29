@@ -9,4 +9,8 @@ export class ProviderService {
         return this.prisma.provider.create({ data: CreateProviderDto });
     }
 
+    async findAll() {
+        return this.prisma.provider.findMany();
+    }
+
 }
