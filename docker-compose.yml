@@ -1,18 +1,14 @@
 version: '3.8'
 services:
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin.
-      POSTGRES_DB: backend_db
-    ports:
-      - '5432:5432'
   app:
     build: .
     ports:
       - '3000:3000'
     environment:
-      DATABASE_URL: postgres://admin:admin.@db:5432/backend_db
-    depends_on:
-      - db
+      DATABASE_URL: file:./dev.db
+    # Mount local sqlite DB and prisma schema so data persists and migrations run against the same files
+    volumes:
+      - ./dev.db:/app/dev.db
+      - ./prisma:/app/prisma
+    # Apply migrations (if any) and start the built app
+    command: sh -c "npx prisma migrate deploy --schema=./prisma/schema.prisma || true && node dist/main"
