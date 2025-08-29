@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { SaledetailService } from './saledetail.service';
 import { CreateSaleDetailDto } from './dto/create-saledetail.dto';
 
@@ -10,6 +10,11 @@ export class SaledetailController {
    @Post()
    async create(createSaleDetailDto: CreateSaleDetailDto) {
        return this.saledetailService.create(createSaleDetailDto);
+   }
+
+   @Get()
+   async findAll() {
+       return this.saledetailService.findAll();
    }
 
 }

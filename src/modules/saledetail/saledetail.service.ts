@@ -13,5 +13,9 @@ export class SaledetailService {
         });
     }
 
+    async findAll() {
+        return this.prisma.saleDetail.findMany();
+    }
+
 }
     
