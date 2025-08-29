@@ -1,0 +1,22 @@
+comandos:
+
+1. npm install @prisma/client
+
+2. npm install --save-dev prisma
+
+3. Se crea .env
+
+4. npx prisma migrate dev --name init
+
+5. npx prisma generate
+
+6. npm install --save-dev cross-env
+
+7. Se crea .env.test
+
+8. npx prisma migrate dev --name init --env-file .env.test
+
+9. Se ejecutan las pruebas: npm run test:e2e
+
+Hice unos ajustes en tus archivos y le dejé los comentarios, checalos antes de grabar el vídeo, te recomiendo que no crees una rama junto con esta,
+si no que veas el ejemplo y lo repliques, porque se va a ver el nombre de Misifus y el profe sabe que soy yo

@@ -12,7 +12,6 @@ describe('Product E2E', () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    // try to login (assumes a test user exists) - if not, token stays null
     try {
       const res = await request(app.getHttpServer()).post('/auth/login').send({ username: 'e2e@example.com', password: 'testpass' });
       token = res.body.access_token;
@@ -22,7 +21,7 @@ describe('Product E2E', () => {
   });
 
   it('POST /product creates product', async () => {
-    const req = request(app.getHttpServer()).post('/product').send({ name: 'E2E Prod', price: 10, providerId: 1 });
+    const req = request(app.getHttpServer()).post('/product').send({ name: 'E2E Prod', price: 10, providerId: 1, stock: 100 });
     const res = token ? await req.set('Authorization', `Bearer ${token}`).expect(201) : await req.expect(201);
     expect(res.body.name).toBe('E2E Prod');
     expect(res.body.id).toBeDefined();
