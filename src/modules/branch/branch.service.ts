@@ -13,4 +13,8 @@ export class BranchService {
         });
     }
 
+    async findAll() {
+        return this.prisma.branch.findMany();
+    }
+
 }
