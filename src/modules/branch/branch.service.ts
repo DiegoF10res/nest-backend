@@ -23,4 +23,10 @@ export class BranchService {
         });
     }
 
+    async update(id: number, updateBranchDto: Partial<CreateBranchDto>) {
+        return this.prisma.branch.update({
+            where: { id },
+            data: updateBranchDto
+        });
+    }
 }
