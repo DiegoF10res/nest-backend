@@ -29,4 +29,11 @@ export class BranchService {
             data: updateBranchDto
         });
     }
+
+    async delete(id: number) {
+        return this.prisma.branch.delete({
+            where: { id }
+        });
+    }
+
 }
