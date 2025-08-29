@@ -8,10 +8,14 @@ import { CreateProductDto } from './dto/create-product.dto';
 export class ProductService {
     constructor(private readonly prisma: PrismaService) { }
 
+    /**
+     * Crea un producto en la base de datos.
+     * @param {CreateProductDto} createProductDto - datos del producto a crear
+     * @returns {Promise<Product>} el producto creado
+     */
+
     async create(createProductDto: CreateProductDto) {
-        return this.prisma.product.create({
-            data: createProductDto,
-        });
+        return this.prisma.product.create({ data: createProductDto });
     }
 
     async findAll() {
