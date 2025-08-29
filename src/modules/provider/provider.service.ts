@@ -24,5 +24,9 @@ export class ProviderService {
             data: updateProviderDto,
         });
     }
-    
+
+    async delete(id: number) {
+        return this.prisma.provider.delete({ where: { id } });
+    }
+
 }

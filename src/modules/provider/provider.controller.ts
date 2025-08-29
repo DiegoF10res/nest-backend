@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ProviderService } from './provider.service';
 import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
@@ -26,6 +26,11 @@ export class ProviderController {
     @Patch(':id')
     async updateProvider(@Param('id') id: string, @Body() updateProviderDto: UpdateProviderDto) {
         return this.providerService.update(Number(id), updateProviderDto);
+    }
+
+    @Delete(':id')
+    async deleteProvider(@Param('id') id: string) {
+        return this.providerService.delete(Number(id));
     }
 
 }
