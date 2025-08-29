@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { SaledetailService } from './saledetail.service';
 import { CreateSaleDetailDto } from './dto/create-saledetail.dto';
 
@@ -20,6 +20,16 @@ export class SaledetailController {
    @Get(':id')
    async findById(@Param('id') id: number) {
        return this.saledetailService.findById(id);
+   }
+
+   @Put(':id')
+   async update(@Param('id') id: number, @Body() updateSaleDetailDto: CreateSaleDetailDto) {
+       return this.saledetailService.update(id, updateSaleDetailDto);
+   }
+
+   @Delete(':id')
+   async delete(@Param('id') id: number) {
+       return this.saledetailService.delete(id);
    }
 
 }

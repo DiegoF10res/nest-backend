@@ -23,5 +23,17 @@ export class SaledetailService {
         });
     }
 
+    async update(id: number, data: Partial<CreateSaleDetailDto>) {
+        return this.prisma.saleDetail.update({
+            where: { id },
+            data,
+        });
+    }
+
+    async delete(id: number) {
+        return this.prisma.saleDetail.delete({
+            where: { id },
+        });
+    }
+
 }
-    
