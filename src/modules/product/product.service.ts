@@ -37,6 +37,10 @@ export class ProductService {
         });
     }
 
-    
+    async findByProviderId(providerId: number) {
+        return this.prisma.product.findMany({
+            where: { providerId },
+        });
+    }
 
 }

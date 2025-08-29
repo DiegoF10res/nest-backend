@@ -31,4 +31,9 @@ export class ProductController {
         return this.productService.delete(+id);
     }
 
+    @Get('provider/:providerId')
+    findByProviderId(@Param('providerId') providerId: string) {
+        return this.productService.findByProviderId(+providerId);
+    }
+
 }
