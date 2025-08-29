@@ -17,4 +17,10 @@ export class BranchService {
         return this.prisma.branch.findMany();
     }
 
+    async findById(id: number) {
+        return this.prisma.branch.findUnique({
+            where: { id }
+        });
+    }
+
 }

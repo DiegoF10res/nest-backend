@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { BranchService } from './branch.service';
 import { CreateBranchDto } from './dto/create-branch.dto';
 
@@ -15,6 +15,11 @@ export class BranchController {
     @Get()
     async findAll() {
         return this.branchService.findAll();
+    }
+
+    @Get(':id')
+    async findOne(@Param('id') id: string) {
+        return this.branchService.findById(Number(id));
     }
 
 }
