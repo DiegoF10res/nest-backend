@@ -23,4 +23,13 @@ export class SaleService {
         });
     }
 
+    async findAll() {
+        return this.prisma.sale.findMany({
+            where: {userId: 1},
+            include: {
+                details: true
+            }
+        });
+    }
+
 }
