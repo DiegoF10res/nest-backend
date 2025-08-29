@@ -22,5 +22,10 @@ export class SaleController {
         return this.saleService.findById(id);
     }
 
+    @Get('user/:userId')
+    async findByUser(@Param('userId') userId: number) {
+        return this.saleService.findByUser(userId);
+    }
+
 }
     
