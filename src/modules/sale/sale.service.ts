@@ -50,4 +50,13 @@ export class SaleService {
         });
     }
 
+    async findByBranch(branchId: number) {
+        return this.prisma.sale.findMany({
+            where: { branchId },
+            include: {
+                details: true
+            }
+        });
+    }
+
 }

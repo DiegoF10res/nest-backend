@@ -27,5 +27,10 @@ export class SaleController {
         return this.saleService.findByUser(userId);
     }
 
+    @Get('branch/:branchId')
+    async findByBranch(@Param('branchId') branchId: number) {
+        return this.saleService.findByBranch(branchId);
+    }
+
 }
     
