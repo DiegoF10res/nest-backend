@@ -17,5 +17,11 @@ export class SaledetailService {
         return this.prisma.saleDetail.findMany();
     }
 
+    async findById(id: number) {
+        return this.prisma.saleDetail.findUnique({
+            where: { id },
+        });
+    }
+
 }
     
