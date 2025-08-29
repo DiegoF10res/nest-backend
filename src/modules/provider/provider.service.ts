@@ -13,4 +13,8 @@ export class ProviderService {
         return this.prisma.provider.findMany();
     }
 
+    async findById(id: number) {
+        return this.prisma.provider.findUnique({ where: { id } });
+    }
+
 }
